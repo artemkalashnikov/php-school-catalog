@@ -21,20 +21,13 @@ class Query
     public function fetchArray($sql, $params = [])
     {
         $state = $this->exec($sql, $params);
-
-        $result = [];
-        foreach ($state->fetchAll(PDO::FETCH_ASSOC) as $row) {
-            $result[] = $row;
-        }
-        return $result;
+        return $state->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function fetchRow($sql, $params = [])
     {
-        return [
-            'title' => 'First',
-            'content' => 'First content',
-        ];
+        $state = $this->exec($sql, $params);
+        return $state->fetch(PDO::FETCH_ASSOC);
     }
 
     protected function exec($sql, $params = [])
