@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\View\StringView;
+use App\View\TemplateView;
 
 class FormController
 {
@@ -13,7 +14,11 @@ class FormController
 
     public function index()
     {
-        return new StringView('Forms index');
+        $forms = []; // TODO
+
+        pd($forms);
+
+        return new TemplateView('forms_index', ['forms' => $forms]);
     }
 
     public function update()
