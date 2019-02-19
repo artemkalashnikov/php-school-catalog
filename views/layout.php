@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title><?= $title ?></title>
+    <title><?= $title ?? 'Catalog' ?></title>
 </head>
 <body>
     <?= $content ?>
