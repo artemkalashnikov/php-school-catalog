@@ -13,11 +13,6 @@ class Query
         $this->connection = $connection ?: Connection::connect();
     }
 
-    /**
-     * @param $sql
-     * @param array $params
-     * @return array
-     */
     public function fetchArray($sql, $params = [])
     {
         $state = $this->exec($sql, $params);
@@ -30,10 +25,19 @@ class Query
         return $state->fetch(PDO::FETCH_ASSOC);
     }
 
-    protected function exec($sql, $params = [])
+    public function exec($sql, $params = [])
     {
         $query = $this->connection->prepare($sql);
-        $query->execute($params);
+        $result = $query->execute($params);
+        if (!$result) {
+            throw new \Exception(implode("\n", $query->errorInfo()));
+        }
+
         return $query;
+    }
+
+    public function lastInsertId()
+    {
+        return $this->connection->lastInsertId();
     }
 }

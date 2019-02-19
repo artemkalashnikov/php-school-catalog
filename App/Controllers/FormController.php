@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Database\Query;
+use App\View\Redirect;
 use App\View\TemplateView;
 
 class FormController
@@ -28,13 +29,25 @@ class FormController
         return new TemplateView('forms_index', ['forms' => $forms]);
     }
 
-    public function update()
+    public function create($params, $post)
     {
-        //
+        $query = new Query();
+
+        $query->exec(
+            "INSERT INTO forms (title, content) VALUES(:title, :content)",
+            $post
+        );
+
+        $id = $query->lastInsertId();
+
+        return new Redirect('/forms/view?id=' . $id);
     }
 
-    public function delete($id)
+    public function delete($params)
     {
-        //
+        $query = new Query();
+        $query->exec("DELETE FROM forms WHERE id = :id", $params);
+
+        return new Redirect('/forms');
     }
 }

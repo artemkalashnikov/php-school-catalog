@@ -70,7 +70,7 @@ class Application
 
     protected function exec($controller, $action, RequestInterface $request) : ViewInterface
     {
-        return $controller->$action($request->getQueryParams());
+        return $controller->$action($request->getQueryParams(), $request->getPostData());
     }
 
     protected function render(ViewInterface $view)

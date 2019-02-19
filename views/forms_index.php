@@ -10,7 +10,15 @@
 
 
 <form action="/forms/create" method="post">
-    Title: <input type="text" name="title" />
+    <label>Title: </label>
+    <br>
+    <input type="text" name="title" />
+
+    <br>
     Content:
+    <br>
     <textarea name="content"></textarea>
+
+    <br>
+    <input type="submit" value="Submit" />
 </form>
