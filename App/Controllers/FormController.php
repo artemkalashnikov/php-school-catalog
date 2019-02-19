@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Database\Connection;
 use App\View\StringView;
 use App\View\TemplateView;
 
@@ -14,6 +15,8 @@ class FormController
 
     public function index()
     {
+        $connection = Connection::connect();
+        pd($connection);
         $forms = []; // TODO
 
         pd($forms);
