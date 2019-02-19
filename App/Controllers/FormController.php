@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Database\Connection;
+use App\Database\Query;
 use App\View\StringView;
 use App\View\TemplateView;
 
@@ -15,9 +16,8 @@ class FormController
 
     public function index()
     {
-        $connection = Connection::connect();
-        pd($connection);
-        $forms = []; // TODO
+        $query = new Query();
+        $forms = $query->fetchArray("SELECT * FROM forms");
 
         pd($forms);
 
