@@ -4,3 +4,8 @@ CREATE TABLE `forms` (
   `content` TEXT NOT NULL ,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
+
+INSERT INTO `forms` (`id`, `title`, `content`) VALUES
+(NULL, 'First', 'FIrst content'),
+(NULL, 'Second', 'Second content');
+
