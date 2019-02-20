@@ -1,10 +1,10 @@
-<?php
 
-$title = 'Main form';
+<h1><?= $form['title'] ?></h1>
 
-?>
+<p><?= $form['content'] ?></p>
 
+<br />
 
-<h1>Hello.</h1>
-
-Forms view file.
+<a href="/forms">Go home</a>
+<br>
+<a href="/forms/delete?id=<?= $form['id'] ?>">Delete this page</a>
